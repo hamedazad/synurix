@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Synurix Website
+
+A modern, production-ready website for Synurix, an AI technology company focused on developing intelligent applications and enterprise systems.
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Forms**: React Hook Form + Zod
+- **Icons**: Lucide React
+
+## Features
+
+- Modern dark theme with glassmorphism effects
+- Fully responsive design
+- Smooth animations and transitions
+- Form validation with React Hook Form and Zod
+- SEO-friendly metadata
+- Production-ready code structure
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+├── app/
+│   ├── page.tsx              # Home page
+│   ├── products/             # Products page
+│   ├── enterprise/           # Enterprise Solutions page
+│   ├── cooperate/            # Cooperate With Us page
+│   ├── submit-project/       # Submit a Project page
+│   ├── about/                # About page
+│   ├── layout.tsx            # Root layout
+│   └── globals.css           # Global styles
+├── components/
+│   ├── Navigation.tsx        # Top navigation
+│   ├── Footer.tsx            # Footer component
+│   ├── ProductCard.tsx       # Product card component
+│   ├── EnterpriseCard.tsx    # Enterprise solution card
+│   ├── CooperationForm.tsx   # Cooperation form
+│   └── ProjectForm.tsx       # Project submission form
+└── public/                   # Static assets
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Pages
 
-## Deploy on Vercel
+- **Home**: Hero section with company introduction and core technologies
+- **Products**: Showcase of core AI products with expandable details
+- **Enterprise Solutions**: Enterprise-focused AI solutions with technical details
+- **Cooperate With Us**: Application form for job seekers and collaborators
+- **Submit a Project**: Project submission form for companies
+- **About**: Company information, mission, vision, and leadership
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design System
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Colors**: Dark theme with blue, purple, and pink gradients
+- **Typography**: Large, readable fonts with gradient text effects
+- **Effects**: Glassmorphism, soft shadows, subtle animations
+- **Spacing**: Clean, generous spacing for readability
+
+## License
+
+© 2025 Synurix. All rights reserved.

@@ -57,12 +57,24 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Intelligent Systems Engineering
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-4 leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 leading-relaxed">
               Designing AI Systems for Real-World Operations
             </p>
-            <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Synurix develops intelligent systems that combine machine learning, neural architectures, and data intelligence to support complex enterprise and financial operations at scale.
-            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+              <Link
+                href="/enterprise"
+                className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 text-sm md:text-base"
+              >
+                Enterprise Solutions
+              </Link>
+              <Link
+                href="/submit-project"
+                className="px-8 py-3 glass rounded-lg font-semibold text-white hover:bg-white/10 transition-all duration-300 text-sm md:text-base"
+              >
+                Submit a Project
+              </Link>
+            </div>
             
           </motion.div>
         </div>
@@ -424,39 +436,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass-strong rounded-2xl p-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Build Intelligent Solutions?
-            </h2>
-            <p className="text-xl text-white/70 mb-8">
-              Whether you&apos;re looking for AI products or enterprise solutions, we&apos;re here to help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/enterprise"
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
-              >
-                Enterprise Solutions
-              </Link>
-              <Link
-                href="/submit-project"
-                className="px-8 py-4 glass rounded-lg font-semibold text-white hover:bg-white/10 transition-all duration-300"
-              >
-                Submit a Project
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   )
 }
