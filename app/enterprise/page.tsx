@@ -1,11 +1,20 @@
 'use client'
 
+import { Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { useSearchParams } from 'next/navigation'
 import EnterpriseCard from '@/components/EnterpriseCard'
 import { solutions, generateSlug } from './solutions-data'
 
 export default function EnterprisePage() {
+  return (
+    <Suspense fallback={null}>
+      <EnterprisePageContent />
+    </Suspense>
+  )
+}
+
+function EnterprisePageContent() {
   const searchParams = useSearchParams()
   const slugFromQuery = searchParams.get('solution')
 
@@ -22,7 +31,7 @@ export default function EnterprisePage() {
             Enterprise AI Solutions
           </h1>
           <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Advanced AI systems designed for enterprise-scale applications. Built for reliability, scalability, and real-world impact. Click "View Technical Details" on any solution to see business benefits and technical information.
+            Advanced AI systems designed for enterprise-scale applications. Built for reliability, scalability, and real-world impact. Click &quot;View Technical Details&quot; on any solution to see business benefits and technical information.
           </p>
         </motion.div>
 
@@ -35,8 +44,8 @@ export default function EnterprisePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <EnterpriseCard 
-                {...solution} 
+              <EnterpriseCard
+                {...solution}
                 slug={generateSlug(solution.title)}
                 autoExpand={slugFromQuery === generateSlug(solution.title)}
               />

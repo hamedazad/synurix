@@ -342,6 +342,20 @@ export const solutions: Solution[] = [
     ],
     technicalExplanation:
       'The platform employs multiple recommendation algorithms including matrix factorization, neural collaborative filtering, and transformer-based sequence models. User embeddings capture preferences from historical interactions, while item embeddings represent product or content characteristics. Deep learning models learn complex interaction patterns between users and items. Real-time feature engineering processes user behavior, context, and item features. Multi-armed bandit algorithms balance exploration and exploitation for optimal recommendations. The system supports multiple recommendation types including personalized ranking, next-item prediction, and next-best-action. A/B testing frameworks measure recommendation effectiveness. The platform includes explainability features showing why items were recommended. Integration with content management and product catalogs enables real-time updates. Cold-start handling addresses new users and items through content-based and popularity-based fallbacks.',
+    useCases: [
+      'Personalized product recommendations for an e-commerce platform across web and mobile',
+      'Next-best-offer suggestions in a SaaS product based on in-app behavior and usage patterns',
+      'Content recommendations for a media platform optimizing watch and read time',
+      'Real-time promotion targeting in retail based on basket composition and customer history',
+      'In-app guidance and upsell flows for financial services applications',
+    ],
+    technologies: [
+      'Python, TensorFlow, PyTorch',
+      'Scikit-learn, implicit',
+      'Kafka, Redis',
+      'PostgreSQL, ClickHouse',
+      'A/B testing frameworks',
+    ],
     icon: 'Personalized Recommendation',
   },
   {
@@ -358,6 +372,20 @@ export const solutions: Solution[] = [
     ],
     technicalExplanation:
       'The platform analyzes transaction networks using graph neural networks to identify suspicious patterns and relationships. Customer behavior analysis detects anomalies in transaction patterns, amounts, and frequencies. Machine learning models combine multiple signals including transaction features, customer attributes, and network characteristics. The system performs real-time transaction screening against sanctions lists and watchlists. Network analysis identifies complex laundering schemes involving multiple accounts and entities. Risk scoring algorithms prioritize alerts for investigation. Automated case management workflows route alerts to compliance officers with supporting evidence. The platform includes explainability features showing why transactions were flagged, supporting regulatory reporting requirements. Continuous learning incorporates feedback from investigations to improve detection accuracy. Integration with transaction monitoring systems enables real-time screening of millions of transactions per day.',
+    useCases: [
+      'Transaction monitoring for a global bank across retail and corporate channels',
+      'AML surveillance for a fintech payment processor operating in multiple regions',
+      'Cryptocurrency exchange monitoring for wallet and transaction-level risk',
+      'Sanctions and PEP screening integrated into onboarding and ongoing KYC reviews',
+      'Alert triage and case management for compliance operations teams',
+    ],
+    technologies: [
+      'Python, PyTorch Geometric',
+      'Graph databases (Neo4j)',
+      'Kafka, Spark',
+      'Elasticsearch',
+      'PostgreSQL',
+    ],
     icon: 'Regulatory Compliance & AML',
   },
 ]

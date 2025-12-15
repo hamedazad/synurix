@@ -12,10 +12,9 @@ const cooperationSchema = z.object({
   role: z.enum(['AI Engineer', 'Data Scientist', 'ML Engineer', 'Research', 'Other']),
   skills: z.string().min(10, 'Please provide details about your skills and experience'),
   motivation: z.string().min(20, 'Please provide your motivation (at least 20 characters)'),
-  resumeLink: z.preprocess(
-    (val) => (val === '' ? undefined : val),
-    z.string().url('Please provide a valid URL').optional()
-  ),
+  resumeLink: z
+    .union([z.string().url('Please provide a valid URL'), z.literal('')])
+    .optional(),
 })
 
 type CooperationFormData = z.infer<typeof cooperationSchema>

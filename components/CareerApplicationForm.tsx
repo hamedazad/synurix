@@ -31,12 +31,9 @@ const careerSchema = z.object({
     'Researcher',
   ]),
   yearsOfExperience: z
-    .string()
-    .regex(/^[0-9]+$/, 'Years of experience must be a number')
-    .transform((val) => Number(val))
-    .refine((val) => val >= 0 && val <= 40, {
-      message: 'Please provide a value between 0 and 40 years',
-    }),
+    .number()
+    .min(0, 'Please provide a value between 0 and 40 years')
+    .max(40, 'Please provide a value between 0 and 40 years'),
   keySkills: z
     .string()
     .min(10, 'Please provide a short overview of your key skills'),
@@ -256,7 +253,7 @@ export default function CareerApplicationForm() {
                     type="number"
                     min={0}
                     max={40}
-                    {...register('yearsOfExperience' as const, { valueAsNumber: false })}
+                    {...register('yearsOfExperience', { valueAsNumber: true })}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="e.g. 3"
                   />
