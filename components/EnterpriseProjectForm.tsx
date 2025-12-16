@@ -1,11 +1,12 @@
  'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CheckCircle2, Loader2 } from 'lucide-react'
 import { StepForm } from './ui/StepForm'
+import Select from './ui/Select'
 
 const enterpriseProjectSchema = z.object({
   // Step 1: Company information
@@ -22,7 +23,34 @@ const enterpriseProjectSchema = z.object({
     .min(40, 'Please provide at least 40 characters describing the problem'),
   aiRequirements: z
     .array(
-      z.enum(['ML', 'NLP', 'Computer Vision', 'Data Mining', 'Predictive Analytics'])
+      z.enum([
+        'ML',
+        'NLP',
+        'Computer Vision',
+        'Data Mining',
+        'Predictive Analytics',
+        'Deep Learning',
+        'Reinforcement Learning',
+        'Anomaly Detection',
+        'Fraud Detection',
+        'Recommendation Systems',
+        'Natural Language Generation',
+        'Speech Recognition',
+        'Time Series Forecasting',
+        'Clustering & Classification',
+        'Feature Engineering',
+        'Model Optimization',
+        'AutoML',
+        'Explainable AI (XAI)',
+        'Transfer Learning',
+        'Neural Networks',
+        'Graph Neural Networks',
+        'Large Language Models (LLM)',
+        'Generative AI',
+        'Robotic Process Automation (RPA)',
+        'Real-time Inference',
+        'Edge AI',
+      ])
     )
     .min(1, 'Select at least one AI requirement'),
   estimatedTimeline: z.string().min(1, 'Please provide an estimated timeline'),
@@ -52,6 +80,7 @@ export default function EnterpriseProjectForm() {
     register,
     handleSubmit,
     trigger,
+    control,
     formState: { errors },
     reset,
     watch,
@@ -111,6 +140,27 @@ export default function EnterpriseProjectForm() {
     'Computer Vision',
     'Data Mining',
     'Predictive Analytics',
+    'Deep Learning',
+    'Reinforcement Learning',
+    'Anomaly Detection',
+    'Fraud Detection',
+    'Recommendation Systems',
+    'Natural Language Generation',
+    'Speech Recognition',
+    'Time Series Forecasting',
+    'Clustering & Classification',
+    'Feature Engineering',
+    'Model Optimization',
+    'AutoML',
+    'Explainable AI (XAI)',
+    'Transfer Learning',
+    'Neural Networks',
+    'Graph Neural Networks',
+    'Large Language Models (LLM)',
+    'Generative AI',
+    'Robotic Process Automation (RPA)',
+    'Real-time Inference',
+    'Edge AI',
   ]
 
   if (isSubmitted) {
@@ -180,18 +230,26 @@ export default function EnterpriseProjectForm() {
                   <label htmlFor="companySize" className="block text-sm font-semibold mb-2">
                     Company size *
                   </label>
-                  <select
-                    id="companySize"
-                    {...register('companySize')}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Select</option>
-                    <option value="1-10">1–10</option>
-                    <option value="11-50">11–50</option>
-                    <option value="51-200">51–200</option>
-                    <option value="201-1000">201–1,000</option>
-                    <option value="1000+">1,000+</option>
-                  </select>
+                  <Controller
+                    name="companySize"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        id="companySize"
+                        value={field.value || ''}
+                        onChange={field.onChange}
+                        options={[
+                          { value: '1-10', label: '1–10' },
+                          { value: '11-50', label: '11–50' },
+                          { value: '51-200', label: '51–200' },
+                          { value: '201-1000', label: '201–1,000' },
+                          { value: '1000+', label: '1,000+' },
+                        ]}
+                        placeholder="Select company size"
+                        error={!!errors.companySize}
+                      />
+                    )}
+                  />
                   {errors.companySize && (
                     <p className="mt-1 text-sm text-red-400">{errors.companySize.message}</p>
                   )}

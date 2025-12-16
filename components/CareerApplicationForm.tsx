@@ -1,11 +1,12 @@
  'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CheckCircle2, Loader2 } from 'lucide-react'
 import { StepForm } from './ui/StepForm'
+import Select from './ui/Select'
 
 const careerSchema = z.object({
   // Step 1
@@ -27,8 +28,15 @@ const careerSchema = z.object({
     'AI Engineer',
     'Data Scientist',
     'ML Engineer',
+    'Python Programmer',
     'Backend Engineer',
-    'Researcher',
+    'MLOps Engineer',
+    'Data Engineer',
+    'Software Engineer',
+    'Full Stack Engineer',
+    'DevOps Engineer',
+    'Frontend Engineer',
+    'AI Research Scientist',
   ]),
   yearsOfExperience: z
     .number()
@@ -63,6 +71,7 @@ export default function CareerApplicationForm() {
     register,
     handleSubmit,
     trigger,
+    control,
     formState: { errors },
     reset,
   } = useForm<CareerFormData>({
@@ -228,17 +237,33 @@ export default function CareerApplicationForm() {
                   <label htmlFor="roleOfInterest" className="block text-sm font-semibold mb-2">
                     Role of interest *
                   </label>
-                  <select
-                    id="roleOfInterest"
-                    {...register('roleOfInterest')}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="AI Engineer">AI Engineer</option>
-                    <option value="Data Scientist">Data Scientist</option>
-                    <option value="ML Engineer">ML Engineer</option>
-                    <option value="Backend Engineer">Backend Engineer</option>
-                    <option value="Researcher">Researcher</option>
-                  </select>
+                  <Controller
+                    name="roleOfInterest"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        id="roleOfInterest"
+                        value={field.value || ''}
+                        onChange={field.onChange}
+                        options={[
+                          { value: 'AI Engineer', label: 'AI Engineer' },
+                          { value: 'Data Scientist', label: 'Data Scientist' },
+                          { value: 'ML Engineer', label: 'ML Engineer' },
+                          { value: 'Python Programmer', label: 'Python Programmer' },
+                          { value: 'Backend Engineer', label: 'Backend Engineer' },
+                          { value: 'MLOps Engineer', label: 'MLOps Engineer' },
+                          { value: 'Data Engineer', label: 'Data Engineer' },
+                          { value: 'Software Engineer', label: 'Software Engineer' },
+                          { value: 'Full Stack Engineer', label: 'Full Stack Engineer' },
+                          { value: 'DevOps Engineer', label: 'DevOps Engineer' },
+                          { value: 'Frontend Engineer', label: 'Frontend Engineer' },
+                          { value: 'AI Research Scientist', label: 'AI Research Scientist' },
+                        ]}
+                        placeholder="Select a role"
+                        error={!!errors.roleOfInterest}
+                      />
+                    )}
+                  />
                   {errors.roleOfInterest && (
                     <p className="mt-1 text-sm text-red-400">{errors.roleOfInterest.message}</p>
                   )}

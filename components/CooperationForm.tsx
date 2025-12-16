@@ -1,15 +1,30 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { CheckCircle2, Loader2 } from 'lucide-react'
+import Select from './ui/Select'
 
 const cooperationSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  role: z.enum(['AI Engineer', 'Data Scientist', 'ML Engineer', 'Research', 'Other']),
+  role: z.enum([
+    'AI Engineer',
+    'Data Scientist',
+    'ML Engineer',
+    'Python Programmer',
+    'Backend Engineer',
+    'MLOps Engineer',
+    'Data Engineer',
+    'Software Engineer',
+    'Full Stack Engineer',
+    'DevOps Engineer',
+    'Frontend Engineer',
+    'AI Research Scientist',
+    'Other',
+  ]),
   skills: z.string().min(10, 'Please provide details about your skills and experience'),
   motivation: z.string().min(20, 'Please provide your motivation (at least 20 characters)'),
   resumeLink: z
@@ -26,6 +41,7 @@ export default function CooperationForm() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
   } = useForm<CooperationFormData>({
@@ -98,17 +114,34 @@ export default function CooperationForm() {
           <label htmlFor="role" className="block text-sm font-semibold mb-2">
             Role of Interest *
           </label>
-          <select
-            id="role"
-            {...register('role')}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="AI Engineer">AI Engineer</option>
-            <option value="Data Scientist">Data Scientist</option>
-            <option value="ML Engineer">ML Engineer</option>
-            <option value="Research">Research</option>
-            <option value="Other">Other</option>
-          </select>
+          <Controller
+            name="role"
+            control={control}
+            render={({ field }) => (
+              <Select
+                id="role"
+                value={field.value || ''}
+                onChange={field.onChange}
+                options={[
+                  { value: 'AI Engineer', label: 'AI Engineer' },
+                  { value: 'Data Scientist', label: 'Data Scientist' },
+                  { value: 'ML Engineer', label: 'ML Engineer' },
+                  { value: 'Python Programmer', label: 'Python Programmer' },
+                  { value: 'Backend Engineer', label: 'Backend Engineer' },
+                  { value: 'MLOps Engineer', label: 'MLOps Engineer' },
+                  { value: 'Data Engineer', label: 'Data Engineer' },
+                  { value: 'Software Engineer', label: 'Software Engineer' },
+                  { value: 'Full Stack Engineer', label: 'Full Stack Engineer' },
+                  { value: 'DevOps Engineer', label: 'DevOps Engineer' },
+                  { value: 'Frontend Engineer', label: 'Frontend Engineer' },
+                  { value: 'AI Research Scientist', label: 'AI Research Scientist' },
+                  { value: 'Other', label: 'Other' },
+                ]}
+                placeholder="Select a role"
+                error={!!errors.role}
+              />
+            )}
+          />
           {errors.role && (
             <p className="mt-1 text-sm text-red-400">{errors.role.message}</p>
           )}

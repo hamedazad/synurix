@@ -46,7 +46,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-32 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -81,7 +81,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 z-10">
+      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 z-10">
         {/* Enterprise AI Solutions Marquee - Behind Core Technologies */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="h-full flex items-center">
@@ -405,7 +405,7 @@ export default function Home() {
                   </span>
                 </div>
                 <blockquote className="text-base md:text-lg text-white/90 leading-relaxed mb-6">
-                  “Our focus is not on experimenting with AI, but on engineering intelligent systems that operate reliably in real-world, enterprise, and regulated environments.”
+                  "We build intelligent services powered by deep learning architectures that deliver real-world value. Our focus is on production-ready systems that combine neural network innovations with enterprise reliability and regulatory compliance."
                 </blockquote>
                 <footer className="border-t border-white/10 pt-4">
                   <p className="font-semibold text-white">Hamed Azadkhah</p>
