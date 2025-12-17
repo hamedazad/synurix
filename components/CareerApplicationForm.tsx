@@ -66,6 +66,7 @@ export default function CareerApplicationForm() {
   const [currentStep, setCurrentStep] = useState(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const {
     register,
@@ -109,11 +110,30 @@ export default function CareerApplicationForm() {
     if (!isValid) return
 
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    reset()
-    setCurrentStep(0)
+    setErrorMessage(null)
+
+    try {
+      const res = await fetch('/api/careers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      const json = await res.json().catch(() => ({}))
+
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || 'Failed to submit application')
+      }
+
+      setIsSubmitted(true)
+      reset()
+      setCurrentStep(0)
+    } catch (err) {
+      console.error(err)
+      setErrorMessage('Something went wrong while submitting your application. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -142,6 +162,11 @@ export default function CareerApplicationForm() {
       currentStep={currentStep}
       renderStep={(stepIndex) => (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {errorMessage && (
+            <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-md px-3 py-2">
+              {errorMessage}
+            </p>
+          )}
           {stepIndex === 0 && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -37,6 +37,7 @@ type CooperationFormData = z.infer<typeof cooperationSchema>
 export default function CooperationForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const {
     register,
@@ -50,11 +51,27 @@ export default function CooperationForm() {
 
   const onSubmit = async (data: CooperationFormData) => {
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    reset()
+    setErrorMessage(null)
+
+    try {
+      const res = await fetch('/api/cooperate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) {
+        throw new Error('Failed to submit application')
+      }
+      setIsSubmitted(true)
+      reset()
+    } catch (err) {
+      console.error(err)
+      setErrorMessage(
+        'Something went wrong while submitting your application. Please try again.'
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -78,6 +95,11 @@ export default function CooperationForm() {
   return (
     <div className="glass-strong rounded-2xl p-8 md:p-12">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        {errorMessage && (
+          <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-md px-3 py-2">
+            {errorMessage}
+          </p>
+        )}
         <div>
           <label htmlFor="fullName" className="block text-sm font-semibold mb-2">
             Full Name *

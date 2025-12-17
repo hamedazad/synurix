@@ -330,7 +330,7 @@ export const solutions: Solution[] = [
   },
   {
     title: 'Personalized Recommendation & Next-Best-Action Engine',
-    summary: 'Advanced recommendation system that delivers personalized product, content, and action recommendations across digital channels. The platform uses collaborative filtering, content-based filtering, and deep learning to understand user preferences and predict engagement. Real-time scoring enables dynamic personalization that adapts to user behavior, maximizing conversion rates, engagement, and revenue through optimized next-best-action strategies.',
+    summary: 'AI-powered recommendation engine using collaborative filtering, content-based filtering, and deep learning to deliver personalized product, content, and action recommendations. Real-time scoring enables dynamic personalization that adapts to user behavior, maximizing conversion rates, engagement, and revenue through optimized next-best-action strategies.',
     industries: ['E-commerce', 'Media', 'SaaS', 'Retail'],
     coreTechniques: ['Collaborative Filtering', 'Deep Learning', 'Reinforcement Learning'],
     businessBenefits: [
@@ -360,7 +360,7 @@ export const solutions: Solution[] = [
   },
   {
     title: 'Regulatory Compliance & AML Monitoring Platform',
-    summary: 'Comprehensive anti-money laundering (AML) and regulatory compliance monitoring system for financial institutions. The platform analyzes transaction patterns, customer behavior, and relationship networks to identify suspicious activities and ensure compliance with KYC, AML, and sanctions screening requirements. Advanced graph analytics and machine learning detect complex money laundering schemes that traditional rule-based systems miss, while maintaining explainability for regulatory reporting.',
+    summary: 'AI-powered AML compliance platform using graph analytics and machine learning to detect money laundering through transaction and network analysis. Identifies suspicious activities and ensures KYC, AML, and sanctions compliance with explainable AI for regulatory reporting.',
     industries: ['Banking', 'FinTech', 'Cryptocurrency', 'Payment Processing'],
     coreTechniques: ['Graph Neural Networks', 'Anomaly Detection', 'Pattern Recognition'],
     businessBenefits: [
